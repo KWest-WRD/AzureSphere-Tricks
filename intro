@@ -14,6 +14,11 @@ Manufacturing 
 https://docs.microsoft.com/en-us/azure-sphere/hardware/hardware-manufacturing-overview
 Azure Sphere API here.
 https://docs.microsoft.com/en-ca/azure-sphere/reference/applibs-reference/api-overview
+M4 drivers (MediaTek)
+https://github.com/MediaTek-Labs/mt3620_m4_software
+M4 drivers (Codethink)
+https://github.com/CodethinkLabs/mt3620-m4-drivers
+https://github.com/CodethinkLabs/mt3620-m4-samples
  
 Guardian Module
 https://docs.microsoft.com/en-us/azure-sphere/hardware/guardian-modules

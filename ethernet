@@ -8,6 +8,8 @@ hardware instruction
 3. in app init function, add
    - err = Networking_SetInterfaceState("eth0", true);
 
+board configuration file can be part of OTA
+
 note: 
 - private ethernet supports DHCP and static IP
 - public ethernet supports only DHCP (as of 2019.10.27)

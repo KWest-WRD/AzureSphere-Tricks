@@ -1,0 +1,12 @@
+All of the Azure Sphere sample projects use CMake today. In VS to create just a CMake HL app use the Azure Sphere blink project type. Or in VS you can use the Azure Sphere MT3630 blank project type to create a CMake project with HL and RT apps use the Azure Sphere MT3620 Blank project type*.
+
+If you have additional c files other than main.c add them to the project folder. VS or VS Code will see them. To add them to compilation add them to the add_executable line in CMakeLists.txt, e.g.
+ add_executable (${PROJECT_NAME} main.c file1.c file2.c)
+
+ To add additional files to your image package add this line in CMakeLists.txt before the make image file line:
+  SET(ADDITIONAL_APPROOT_INCLUDES "file1.dat;file2.dat")
+  include (${AZURE_SPHERE_MAKE_IMAGE_FILE})
+
+Make sure you have added the necessary libraries into CMakeLists.txt target_link_libraries. You can see what libraries your existing Azure Sphere VS solution is using in project properties > Linker inputs
+
+*If you only need the RT app close that folder, delete the HL app, now open the root folder of the RT app where the CMakeLists.txt is. You will want to remove the AllowedApplicationConnections from the app_manifest.json and partnerComponents from the launch.vs.json. This is necessary as the RT app was generated with settings to work with the HL app that was also generated. We will look at adding an RT only template.

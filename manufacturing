@@ -1,5 +1,31 @@
 # placeholder for manufacturing contents
 production signed image download
 https://prod.releases.sphere.azure.net/recovery/mt3620an.zip
+> azsphere device recover --images <dir>
+
+Load Software
+
+Get a production-signed image, upload it to the Azure Sphere Security Service by using the azsphere image command:
+> azsphere image add --filepath <imagepackage-file>
+
+Applications that are intended for use only during factory testing must be explicitly identified as temporary images. This ensures that these applications can be removed at the end of the testing process. To mark an image as temporary, use the --temporary parameter when you upload the file for production signing:
+
+> azsphere image add --filepath <imagepackage-file> --temporary
+
+Save the component ID that the command displays; you'll need it later to remove the temporary image from the device.To download the production-signed image, use the following command:
+
+> azsphere image download --imageid <image-id> --output <file-path>
+
+Replace <image-id> with the ID of the image to download, and replace <file-path> with the filename and path in which to save the downloaded image. The image ID appears in the output of the azsphere image add command.
+
+After you save the production-signed image, no further internet connectivity is necessary.
+
+
+Deploy and delete images
+To deploy a production-signed image onto a device in the factory, use the azsphere device sideload command:
+> azsphere device sideload deploy --imagepackage <file-path> [--deviceip <ip> | --devicelocation <USB location>]
+
+If you load a temporary application for testing, use the following command to delete it after testing is complete:
+> azsphere device sideload delete --componentid <component id> [--deviceip <ip> | --devicelocation <USB location>]
 
 
